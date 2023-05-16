@@ -13,26 +13,16 @@ export default function Home() {
         width="1000px"
         src="https://docs.google.com/document/d/e/2PACX-1vR-ypNWuwDXnH32k3Qrywk401d5GffjfewAQQXZ_SHzC-hKNAxEOVjwbeXID2Uh3cHmXbro6ktHO3Qv/pub?embedded=true"
       ></iframe>
-      {/* <iframe src={testHtml}></iframe> */}
       <iframe
         id="test"
         width="800px"
-        // height="100%"
         src="./test2.html"
-        onLoad={(obj) => {
-          console.log("does it run??????????????????????????");
-          console.log(obj);
-          console.log(obj.currentTarget.style.height);
-          console.log(obj.currentTarget.style.width);
-
-          obj.currentTarget.style.height =
-            (obj.currentTarget.contentWindow?.document.body.scrollHeight ||
+        onLoad={(event) => {
+          event.currentTarget.style.height =
+            (event.currentTarget.contentWindow?.document.body.scrollHeight ||
               500) +
             20 +
             "px";
-          /* obj.currentTarget.style.width =
-            (obj.currentTarget.contentWindow?.document.body.scrollWidth ||
-              500) + "px"; */
         }}
       ></iframe>
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
