@@ -9,11 +9,6 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <iframe
-        height="1000px"
-        width="1000px"
-        src="https://docs.google.com/document/d/e/2PACX-1vR-ypNWuwDXnH32k3Qrywk401d5GffjfewAQQXZ_SHzC-hKNAxEOVjwbeXID2Uh3cHmXbro6ktHO3Qv/pub?embedded=true"
-      ></iframe>
-      <iframe
         id="test"
         width="800px"
         src="./test2.html"
