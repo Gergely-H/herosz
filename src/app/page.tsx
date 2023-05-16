@@ -1,8 +1,40 @@
-import Image from 'next/image'
+"use client";
+import Image from "next/image";
 
 export default function Home() {
+  /**
+   * This function call is needed to run iframe onLoad function and set its height.
+   */
+  document.getElementById("test");
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <iframe
+        height="1000px"
+        width="1000px"
+        src="https://docs.google.com/document/d/e/2PACX-1vR-ypNWuwDXnH32k3Qrywk401d5GffjfewAQQXZ_SHzC-hKNAxEOVjwbeXID2Uh3cHmXbro6ktHO3Qv/pub?embedded=true"
+      ></iframe>
+      {/* <iframe src={testHtml}></iframe> */}
+      <iframe
+        id="test"
+        width="800px"
+        // height="100%"
+        src="./test2.html"
+        onLoad={(obj) => {
+          console.log("does it run??????????????????????????");
+          console.log(obj);
+          console.log(obj.currentTarget.style.height);
+          console.log(obj.currentTarget.style.width);
+
+          obj.currentTarget.style.height =
+            (obj.currentTarget.contentWindow?.document.body.scrollHeight ||
+              500) +
+            20 +
+            "px";
+          /* obj.currentTarget.style.width =
+            (obj.currentTarget.contentWindow?.document.body.scrollWidth ||
+              500) + "px"; */
+        }}
+      ></iframe>
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
@@ -15,7 +47,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -47,7 +79,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
+            Docs{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -64,7 +96,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
+            Learn{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -81,7 +113,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
+            Templates{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -98,7 +130,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
+            Deploy{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -109,5 +141,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }
