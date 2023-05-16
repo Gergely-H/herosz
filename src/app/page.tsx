@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
+import type { FC } from "react";
 
-export default function Home() {
+const Home: FC = () => {
   /**
    * This function call is needed to run iframe onLoad function and set its height.
    */
@@ -127,4 +128,6 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+
+export default Home;
