@@ -13,6 +13,10 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en">
       <head>
+        {/**
+         * This meta tag is needed to avoid 403 response when fetching images of google docs.
+         * https://stackoverflow.com/a/74495028
+         */}
         <meta name="referrer" content="no-referrer" />
       </head>
       <body className={inter.className}>{children}</body>

@@ -70,6 +70,10 @@ const saveFile = async (fileId: string) => {
 
 const getDoc = async (fileId: string) => {
   try {
+    /**
+     * Generic return type is unknown because of a bug. This is why casting is required.
+     * https://github.com/googleapis/google-api-nodejs-client/issues/1683
+     */
     const res = await (service.files.export({
       fileId,
       mimeType: "text/html",
@@ -107,7 +111,7 @@ const getDoc = async (fileId: string) => {
         }
       },
     });
-    // console.log(html.props);
+
     return html;
   } catch (error) {
     console.error(error);
