@@ -1,26 +1,54 @@
-"use client";
+import parse, { Element, HTMLReactParserOptions } from "html-react-parser";
 import Image from "next/image";
 import type { FC } from "react";
+// import { getFile } from "./googleDriveApi";
+// import { getFileList } from "./googleDriveApi";
+import { getDoc } from "./googleDriveApi";
+import testHtml from "./test2";
+var a = require("./favicon.ico");
 
-const Home: FC = () => {
+const options: HTMLReactParserOptions = {
   /**
-   * This function call is needed to run iframe onLoad function and set its height.
+   * Google docs API returns HTML that causes NextJS hydration to fail.
+   * E.g. empty tbody tag in tr tag.
+   * These childless and styless tags are replaced with React Fragment.
+   * @param domNode The current DOM Node during the parsing of the HTML content.
+   * @returns Valid JSX element that replaces the domNode.
+   * If no valid JSX element is returned then the domNode is not replaced.
    */
-  document.getElementById("test");
+  replace: (domNode) => {
+    if (domNode instanceof Element && domNode.attribs) {
+      const isNodeEmptyAndStyless =
+        Object.keys(domNode.attribs).length === 0 &&
+        domNode.attribs.constructor === Object &&
+        domNode.children.length === 0;
+      if (isNodeEmptyAndStyless) {
+        return <></>;
+      }
+    }
+  },
+};
+
+// getFile("1gZsPhGvHZYzXQpIwoj0qZAVx29LnYaMb");
+/* getFileList().then((a) => {
+  console.log(a);
+}); */
+getDoc("197ZmQzT70P2HWxGQCxn2vSvfP92_t2WR0Vav7craOL4");
+// uploadFile(a);
+
+/**
+ * Typescript cannot handle async Server Components yet.
+ * https://github.com/vercel/next.js/issues/42292
+ * https://nextjs.org/docs/app/building-your-application/data-fetching/fetching
+ */
+/* @ts-expect-error Server Component */
+const Home: FC = async () => {
+  const doc = await getDoc("197ZmQzT70P2HWxGQCxn2vSvfP92_t2WR0Vav7craOL4");
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <iframe
-        id="test"
-        width="800px"
-        src="./test2.html"
-        onLoad={(event) => {
-          event.currentTarget.style.height =
-            (event.currentTarget.contentWindow?.document.body.scrollHeight ||
-              500) +
-            20 +
-            "px";
-        }}
-      ></iframe>
+      {parse(testHtml, options)}
+      {doc}
+
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;

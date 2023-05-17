@@ -1,13 +1,10 @@
-<!-- <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-  </head> -->
+const testHtml = `
 <div
   class="doc-content"
   style="
     background-color: #ffffff;
     padding: 54pt 54pt 54pt 54pt;
-    max-width: 487.3pt;
+    width: min-content;
   "
 >
   <p
@@ -2073,6 +2070,6 @@
       >Footer</span
     >
   </p>
-</div>
-<!--  </body>
-</html> -->
+</div>`;
+
+export default testHtml;

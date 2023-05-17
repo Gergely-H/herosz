@@ -1,3 +1,29 @@
 https://stackoverflow.com/a/74495028
 
 <meta name="referrer" content="no-referrer" />
+
+
+const options: HTMLReactParserOptions = {
+    /**
+     * Google docs API returns HTML that causes NextJS hydration to fail.
+     * E.g. empty tbody tag in tr tag.
+     * These childless and styless tags are replaced with React Fragment.
+     * @param domNode The current DOM Node during the parsing of the HTML content.
+     * @returns Valid JSX element that replaces the domNode.
+     * If no valid JSX element is returned then the domNode is not replaced.
+     */
+    replace: (domNode) => {
+      if (domNode instanceof Element && domNode.attribs) {
+        const isNodeEmptyAndStyless =
+          Object.keys(domNode.attribs).length === 0 &&
+          domNode.attribs.constructor === Object &&
+          domNode.children.length === 0;
+        if (isNodeEmptyAndStyless) {
+          return <></>;
+        }
+      }
+    },
+  };
+
+
+- check what HTML or JS code turns into from google docs content
