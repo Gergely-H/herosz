@@ -1,11 +1,7 @@
-import parse, { Element, HTMLReactParserOptions } from "html-react-parser";
+import { Element, HTMLReactParserOptions } from "html-react-parser";
 import Image from "next/image";
 import type { FC } from "react";
-// import { getFile } from "./googleDriveApi";
-// import { getFileList } from "./googleDriveApi";
 import { getDoc } from "./googleDriveApi";
-import testHtml from "./test2";
-var a = require("./favicon.ico");
 
 const options: HTMLReactParserOptions = {
   /**
@@ -29,13 +25,6 @@ const options: HTMLReactParserOptions = {
   },
 };
 
-// getFile("1gZsPhGvHZYzXQpIwoj0qZAVx29LnYaMb");
-/* getFileList().then((a) => {
-  console.log(a);
-}); */
-getDoc("197ZmQzT70P2HWxGQCxn2vSvfP92_t2WR0Vav7craOL4");
-// uploadFile(a);
-
 /**
  * Typescript cannot handle async Server Components yet.
  * https://github.com/vercel/next.js/issues/42292
@@ -43,10 +32,9 @@ getDoc("197ZmQzT70P2HWxGQCxn2vSvfP92_t2WR0Vav7craOL4");
  */
 /* @ts-expect-error Server Component */
 const Home: FC = async () => {
-  const doc = await getDoc("197ZmQzT70P2HWxGQCxn2vSvfP92_t2WR0Vav7craOL4");
+  const doc = await getDoc("1I0wBj7p_VfrvrYEgqL-8Q1IJ7D9HajHQuxIbWNyncdY");
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {parse(testHtml, options)}
       {doc}
 
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
