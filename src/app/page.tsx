@@ -1,7 +1,12 @@
+import { RouteSegmentConfig } from "@/types/nextTypes";
 import { Element, HTMLReactParserOptions } from "html-react-parser";
 import Image from "next/image";
 import type { FC } from "react";
 import { getDoc } from "./googleDriveApi";
+
+const routeSegmentConfig: RouteSegmentConfig = {
+  revalidate: 60,
+};
 
 const options: HTMLReactParserOptions = {
   /**
@@ -25,14 +30,12 @@ const options: HTMLReactParserOptions = {
   },
 };
 
-export const revalidate = 60;
-
 /**
  * Typescript cannot handle async Server Components yet.
  * https://github.com/vercel/next.js/issues/42292
  * https://nextjs.org/docs/app/building-your-application/data-fetching/fetching
  */
-/* @ts-expect-error Server Component */
+/* @ts-expect-error Async Server Component */
 const Home: FC = async () => {
   const doc = await getDoc(process.env.TEMP_DOC || "");
   return (
@@ -148,4 +151,5 @@ const Home: FC = async () => {
   );
 };
 
+export const { revalidate, metadata } = routeSegmentConfig;
 export default Home;
