@@ -25,6 +25,8 @@ const options: HTMLReactParserOptions = {
   },
 };
 
+export const revalidate = 60;
+
 /**
  * Typescript cannot handle async Server Components yet.
  * https://github.com/vercel/next.js/issues/42292
