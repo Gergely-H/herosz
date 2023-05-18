@@ -2,28 +2,42 @@ https://stackoverflow.com/a/74495028
 
 <meta name="referrer" content="no-referrer" />
 
-
 const options: HTMLReactParserOptions = {
-    /**
-     * Google docs API returns HTML that causes NextJS hydration to fail.
-     * E.g. empty tbody tag in tr tag.
-     * These childless and styless tags are replaced with React Fragment.
-     * @param domNode The current DOM Node during the parsing of the HTML content.
-     * @returns Valid JSX element that replaces the domNode.
-     * If no valid JSX element is returned then the domNode is not replaced.
-     */
-    replace: (domNode) => {
-      if (domNode instanceof Element && domNode.attribs) {
-        const isNodeEmptyAndStyless =
-          Object.keys(domNode.attribs).length === 0 &&
-          domNode.attribs.constructor === Object &&
-          domNode.children.length === 0;
-        if (isNodeEmptyAndStyless) {
-          return <></>;
-        }
-      }
-    },
-  };
-
+/\*\*
+_ Google docs API returns HTML that causes NextJS hydration to fail.
+_ E.g. empty tbody tag in tr tag.
+_ These childless and styless tags are replaced with React Fragment.
+_ @param domNode The current DOM Node during the parsing of the HTML content.
+_ @returns Valid JSX element that replaces the domNode.
+_ If no valid JSX element is returned then the domNode is not replaced.
+\*/
+replace: (domNode) => {
+if (domNode instanceof Element && domNode.attribs) {
+const isNodeEmptyAndStyless =
+Object.keys(domNode.attribs).length === 0 &&
+domNode.attribs.constructor === Object &&
+domNode.children.length === 0;
+if (isNodeEmptyAndStyless) {
+return <></>;
+}
+}
+},
+};
 
 - check what HTML or JS code turns into from google docs content
+
+- lekezelni, ha nem google docs-ot kapunk vissza egy olyan mappából, ahonnan csak google docs-ot várnánk
+
+- change server access to google drive to read only so in case of an attack the "database" is not purged
+
+- opengraph
+
+- metadata
+
+- redirect to homepage if no url path exists
+
+- either solve the hungarian folder naming or include an explanation of it in README
+
+- add eslint and other configs from other project
+
+- add env variables to deployment
