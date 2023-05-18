@@ -32,7 +32,7 @@ const options: HTMLReactParserOptions = {
  */
 /* @ts-expect-error Server Component */
 const Home: FC = async () => {
-  const doc = await getDoc("1I0wBj7p_VfrvrYEgqL-8Q1IJ7D9HajHQuxIbWNyncdY");
+  const doc = await getDoc(process.env.TEMP_DOC || "");
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       {doc}

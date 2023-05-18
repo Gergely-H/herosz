@@ -2,10 +2,9 @@ import fs from "fs";
 import { GaxiosPromise } from "gaxios";
 import { google } from "googleapis";
 import parse, { Element } from "html-react-parser";
-import path from "path";
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: path.join(__dirname, "herosz-credentials.json"),
+  keyFile: process.env.CREDENTIALS,
   scopes: "https://www.googleapis.com/auth/drive",
 });
 
