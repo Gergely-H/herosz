@@ -5,7 +5,7 @@ import parse, { Element } from "html-react-parser";
 import path from "path";
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: path.join(__dirname, "herosz-76386a807f38.json"),
+  keyFile: path.join(__dirname, "herosz-credentials.json"),
   scopes: "https://www.googleapis.com/auth/drive",
 });
 
