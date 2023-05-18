@@ -4,7 +4,7 @@ import { google } from "googleapis";
 import parse, { Element } from "html-react-parser";
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: process.env.CREDENTIALS,
+  credentials: JSON.parse(process.env.CREDENTIALS || ""),
   scopes: "https://www.googleapis.com/auth/drive",
 });
 
