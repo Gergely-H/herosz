@@ -151,5 +151,5 @@ const Home: FC = async () => {
   );
 };
 
-export const { revalidate, metadata } = routeSegmentConfig;
+export const { revalidate } = routeSegmentConfig;
 export default Home;
