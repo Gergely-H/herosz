@@ -16,7 +16,7 @@ type MetadataConfig =
     };
 
 /**
- * This type is based on what can be exported as a config from a Next.js Route Segment.
+ * These types are based on what can be exported as a config from a Next.js Route Segment.
  */
 type RouteSegmentConfig = BaseRouteSegmentConfig & MetadataConfig;
 
