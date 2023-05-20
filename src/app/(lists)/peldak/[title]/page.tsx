@@ -2,9 +2,9 @@ import type { RouteSegmentConfig } from "@/types/nextTypes";
 import type { Metadata } from "next";
 import type { FC } from "react";
 
-interface DogPageProps {
+interface ExamplePageProps {
   params: {
-    name: string;
+    title: string;
   };
 }
 
@@ -12,20 +12,20 @@ const routeSegmentConfig: RouteSegmentConfig = {
   revalidate: 60,
   generateMetadata: (props) => {
     const {
-      params: { name },
-    } = props as DogPageProps;
+      params: { title },
+    } = props as ExamplePageProps;
 
     const metadata: Metadata = {
-      title: name,
+      title,
     };
 
     return metadata;
   },
 };
 
-const DogPage: FC<DogPageProps> = () => {
+const ExamplePage: FC<ExamplePageProps> = () => {
   return <></>;
 };
 
 export const { revalidate, generateMetadata } = routeSegmentConfig;
-export default DogPage;
+export default ExamplePage;

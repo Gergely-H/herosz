@@ -1,8 +1,8 @@
-import { RouteSegmentConfig } from "@/types/nextTypes";
+import type { RouteSegmentConfig } from "@/types/nextTypes";
 import type { Metadata } from "next";
 import type { FC } from "react";
 
-interface DogPageProps {
+interface SupporterPageProps {
   params: {
     name: string;
   };
@@ -10,10 +10,10 @@ interface DogPageProps {
 
 const routeSegmentConfig: RouteSegmentConfig = {
   revalidate: 60,
-  generateMetadata: (props, parent) => {
+  generateMetadata: (props) => {
     const {
       params: { name },
-    } = props as DogPageProps;
+    } = props as SupporterPageProps;
 
     const metadata: Metadata = {
       title: name,
@@ -23,8 +23,9 @@ const routeSegmentConfig: RouteSegmentConfig = {
   },
 };
 
-const DogPage: FC<DogPageProps> = () => {
+const SupporterPage: FC<SupporterPageProps> = () => {
   return <></>;
 };
 
-export default DogPage;
+export const { revalidate, generateMetadata } = routeSegmentConfig;
+export default SupporterPage;
