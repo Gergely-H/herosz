@@ -33,5 +33,5 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
-export { metadata };
+export const { revalidate, metadata } = routeSegmentConfig;
 export default RootLayout;
