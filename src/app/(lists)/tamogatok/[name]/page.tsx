@@ -1,4 +1,4 @@
-import type { RouteSegmentConfig } from "@/types/nextTypes";
+import type { MetadataConfig, RouteSegmentConfig } from "@/types/nextTypes";
 import type { Metadata } from "next";
 import type { FC } from "react";
 
@@ -10,10 +10,11 @@ interface SupporterPageProps {
 
 const routeSegmentConfig: RouteSegmentConfig = {
   revalidate: 60,
+};
+
+const metadataConfig: MetadataConfig<SupporterPageProps> = {
   generateMetadata: (props) => {
-    const {
-      params: { name },
-    } = props as SupporterPageProps;
+    const { params: { name } = { name: "" } } = props || {};
 
     const metadata: Metadata = {
       title: name,
@@ -27,5 +28,6 @@ const SupporterPage: FC<SupporterPageProps> = () => {
   return <></>;
 };
 
-export const { revalidate, generateMetadata } = routeSegmentConfig;
+export const { revalidate } = routeSegmentConfig;
+export const { generateMetadata } = metadataConfig;
 export default SupporterPage;

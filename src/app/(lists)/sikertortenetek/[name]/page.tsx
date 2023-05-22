@@ -1,4 +1,4 @@
-import type { RouteSegmentConfig } from "@/types/nextTypes";
+import type { MetadataConfig, RouteSegmentConfig } from "@/types/nextTypes";
 import type { Metadata } from "next";
 import type { FC } from "react";
 
@@ -10,10 +10,11 @@ interface SuccessStoryPageProps {
 
 const routeSegmentConfig: RouteSegmentConfig = {
   revalidate: 60,
+};
+
+const metadataConfig: MetadataConfig<SuccessStoryPageProps> = {
   generateMetadata: (props) => {
-    const {
-      params: { name },
-    } = props as SuccessStoryPageProps;
+    const { params: { name } = { name: "" } } = props || {};
 
     const metadata: Metadata = {
       title: name,
@@ -27,5 +28,6 @@ const SuccessStoryPage: FC<SuccessStoryPageProps> = () => {
   return <></>;
 };
 
-export const { revalidate, generateMetadata } = routeSegmentConfig;
+export const { revalidate } = routeSegmentConfig;
+export const { generateMetadata } = metadataConfig;
 export default SuccessStoryPage;
