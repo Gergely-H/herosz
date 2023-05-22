@@ -1,4 +1,4 @@
-import { RouteSegmentConfig } from "@/types/nextTypes";
+import type { MetadataConfig } from "@/types/nextTypes";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import type { FC, PropsWithChildren } from "react";
@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const META_TITLE = "Herosz Budapesti Állatotthon";
 
-const routeSegmentConfig: RouteSegmentConfig = {
+const metadataConfig: MetadataConfig = {
   metadata: {
     title: {
       default: META_TITLE,
@@ -33,5 +33,5 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
-export const { revalidate, metadata } = routeSegmentConfig;
+export const { metadata } = metadataConfig;
 export default RootLayout;
