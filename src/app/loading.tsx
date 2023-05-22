@@ -5,3 +5,5 @@ const LoadingPage: FC = () => (
     <p>Loading...</p>
   </div>
 );
+
+export default LoadingPage;
