@@ -1,4 +1,4 @@
-import { RouteSegmentConfig } from "@/types/nextTypes";
+import type { RouteSegmentConfig } from "@/types/nextTypes";
 import { Element, HTMLReactParserOptions } from "html-react-parser";
 import Image from "next/image";
 import type { FC } from "react";
