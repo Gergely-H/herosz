@@ -1,23 +1,20 @@
-import { Metadata, ResolvingMetadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
+import type { XOR } from "./utilityTypes";
 
-type BaseRouteSegmentConfig = {
+type MetadataConfig<PageProps = unknown> = XOR<
+  {
+    metadata: Metadata;
+  },
+  {
+    generateMetadata: (props: PageProps, parent: ResolvingMetadata) => Metadata;
+  }
+>;
+
+type RouteSegmentConfig = {
   revalidate?: false | "force-cache" | 0 | number;
 };
-
-type MetadataConfig =
-  | {
-      metadata?: Metadata;
-    }
-  | {
-      generateMetadata?: (
-        props?: unknown,
-        parent?: ResolvingMetadata
-      ) => Metadata;
-    };
 
 /**
  * These types are based on what can be exported as a config from a Next.js Route Segment.
  */
-type RouteSegmentConfig = BaseRouteSegmentConfig & MetadataConfig;
-
-export type { RouteSegmentConfig };
+export type { MetadataConfig, RouteSegmentConfig };
