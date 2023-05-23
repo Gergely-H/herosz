@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import type { XOR } from "./utilityTypes";
 
-type MetadataConfig<PageProps = unknown> = XOR<
+type MetadataConfig<PageProps = never> = XOR<
   {
     metadata: Metadata;
   },
