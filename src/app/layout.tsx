@@ -14,7 +14,7 @@ const metadataConfig: MetadataConfig = {
       default: META_TITLE,
       template: `%s - ${META_TITLE}`,
     },
-    description: "A Herosz Budapesti Állatotthon weboldala.",
+    description: "Herosz Budapesti Állatotthon weboldala.",
   },
 };
 
