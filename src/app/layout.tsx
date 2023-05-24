@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import type { MetadataConfig } from "@/types/nextTypes";
 import { Inter } from "next/font/google";
 import Head from "next/head";
@@ -20,7 +21,7 @@ const metadataConfig: MetadataConfig = {
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="hu">
       <Head>
         {/**
          * This meta tag is needed to avoid 403 response when fetching images of google docs.
@@ -28,7 +29,12 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
          */}
         <meta name="referrer" content="no-referrer" />
       </Head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <header>
+          <Navbar />
+        </header>
+        {children}
+      </body>
     </html>
   );
 };
