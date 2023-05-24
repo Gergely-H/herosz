@@ -2,17 +2,17 @@ import type { MetadataConfig, RouteSegmentConfig } from "@/types/nextTypes";
 import type { Metadata } from "next";
 import type { FC } from "react";
 
-interface DogPageProps {
+type Props = {
   params: {
     name: string;
   };
-}
+};
 
 const routeSegmentConfig: RouteSegmentConfig = {
   revalidate: 60,
 };
 
-const metadataConfig: MetadataConfig<DogPageProps> = {
+const metadataConfig: MetadataConfig<Props> = {
   generateMetadata: (props) => {
     const { params: { name } = { name: "" } } = props || {};
 
@@ -24,7 +24,7 @@ const metadataConfig: MetadataConfig<DogPageProps> = {
   },
 };
 
-const DogPage: FC<DogPageProps> = () => {
+const DogPage: FC<Props> = () => {
   return <></>;
 };
 

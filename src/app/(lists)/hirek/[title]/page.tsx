@@ -2,17 +2,17 @@ import type { MetadataConfig, RouteSegmentConfig } from "@/types/nextTypes";
 import type { Metadata } from "next";
 import type { FC } from "react";
 
-interface NewsPageProps {
+type Props = {
   params: {
     title: string;
   };
-}
+};
 
 const routeSegmentConfig: RouteSegmentConfig = {
   revalidate: 60,
 };
 
-const metadataConfig: MetadataConfig<NewsPageProps> = {
+const metadataConfig: MetadataConfig<Props> = {
   generateMetadata: (props) => {
     const { params: { title } = { title: "" } } = props || {};
 
@@ -24,7 +24,7 @@ const metadataConfig: MetadataConfig<NewsPageProps> = {
   },
 };
 
-const NewsPage: FC<NewsPageProps> = () => {
+const NewsPage: FC<Props> = () => {
   return <></>;
 };
 

@@ -2,17 +2,17 @@ import type { MetadataConfig, RouteSegmentConfig } from "@/types/nextTypes";
 import type { Metadata } from "next";
 import type { FC } from "react";
 
-interface ExamplePageProps {
+type Props = {
   params: {
     title: string;
   };
-}
+};
 
 const routeSegmentConfig: RouteSegmentConfig = {
   revalidate: 60,
 };
 
-const metadataConfig: MetadataConfig<ExamplePageProps> = {
+const metadataConfig: MetadataConfig<Props> = {
   generateMetadata: (props) => {
     const { params: { title } = { title: "" } } = props || {};
 
@@ -24,7 +24,7 @@ const metadataConfig: MetadataConfig<ExamplePageProps> = {
   },
 };
 
-const ExamplePage: FC<ExamplePageProps> = () => {
+const ExamplePage: FC<Props> = () => {
   return <></>;
 };
 
