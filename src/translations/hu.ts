@@ -3,7 +3,7 @@ const t = {
     items: {
       news: "Hírek",
       dogs: "Kutyák",
-      cats: "Macskák",
+      cats: "Cicák",
       successStories: "Sikertörténetek",
       supporters: "Támogatók",
       donation: "Adományozás",
