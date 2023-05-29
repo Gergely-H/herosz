@@ -1,4 +1,5 @@
 const routes = {
+  home: "/",
   news: "/hirek",
   dogs: "/kutyak",
   cats: "/cicak",
