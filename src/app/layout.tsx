@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 import type { MetadataConfig } from "@/types/nextTypes";
 import { Inter } from "next/font/google";
 import Head from "next/head";
@@ -8,7 +8,6 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 const META_TITLE = "Herosz Budapesti Állatotthon";
-
 const metadataConfig: MetadataConfig = {
   metadata: {
     title: {
@@ -30,9 +29,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
         <meta name="referrer" content="no-referrer" />
       </Head>
       <body className={inter.className}>
-        <header>
-          <Navbar />
-        </header>
+        <Header />
         {children}
       </body>
     </html>
