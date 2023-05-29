@@ -22,7 +22,7 @@ const Header: FC = () => {
     <>
       <header
         className={`fixed left-0 top-0 z-20 flex w-full flex-row justify-center
-        bg-white [transition:height_300ms,border_180ms,box-shadow_180ms]
+        bg-white [transition:height_300ms,border_150ms,box-shadow_150ms]
         ${
           isScrolled
             ? "h-24 border-b border-neutral-400 shadow-[0_5px_10px_rgba(0,0,0,0.3)]"
