@@ -1,3 +1,1 @@
-import Navbar from "./Navbar";
-
-export default Navbar;
+export { LeftSideNavbar, RightSideNavbar } from "./Navbar";
