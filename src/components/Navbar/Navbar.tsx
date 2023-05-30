@@ -27,7 +27,7 @@ const Navbar: FC<Props> = ({ navigationItems, className }) => {
                 relative mx-2 py-3
                 before:absolute before:-left-4 before:top-0 before:-z-10
                 before:h-12 before:w-[calc(100%+2rem)]
-                before:rounded-full before:bg-blue-200
+                before:rounded-full before:bg-sky-300/40
                 before:opacity-0 before:blur-[10px]
                 before:transition-all
                 before:duration-300 before:ease-[cubic-bezier(0.5,1,0.89,1)] before:content-['']
