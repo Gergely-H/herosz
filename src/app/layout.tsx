@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import type { MetadataConfig } from "@/types/nextTypes";
 import { Inter } from "next/font/google";
@@ -31,6 +32,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
       <body className={inter.className}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
