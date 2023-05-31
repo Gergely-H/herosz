@@ -12,6 +12,11 @@ const t = {
       aboutUs: "Rólunk",
     },
   },
+  footer: {
+    madeByFirstPart: "Az állatok online otthonát a ",
+    creatorName: "NetHuszár.hu",
+    madeByLastPart: " biztosítja.",
+  },
 };
 
 export default t;
