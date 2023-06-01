@@ -1,6 +1,7 @@
 import fs from "fs";
-import { GaxiosPromise } from "gaxios";
+import type { GaxiosPromise } from "gaxios";
 import { google } from "googleapis";
+import type { HTMLReactParserOptions } from "html-react-parser";
 import parse, { Element } from "html-react-parser";
 
 const auth = new google.auth.GoogleAuth({
@@ -67,18 +68,15 @@ const saveFile = async (fileId: string) => {
   }
 };
 
-const getDoc = async (fileId: string) => {
-  try {
+const htmlParserOptions: HTMLReactParserOptions = {
     /**
-     * Generic return type is unknown because of a bug. This is why casting is required.
-     * https://github.com/googleapis/google-api-nodejs-client/issues/1683
+   * Google docs API returns HTML that causes NextJS hydration to fail.
+   * E.g. empty tbody tag in tr tag.
+   * These childless and styless tags are replaced with React Fragment.
+   * @param domNode The current DOM Node during the parsing of the HTML content.
+   * @returns Valid JSX element that replaces the domNode.
+   * If no valid JSX element is returned then the domNode is not replaced.
      */
-    const res = await (service.files.export({
-      fileId,
-      mimeType: "text/html",
-    }) as GaxiosPromise<string>);
-
-    const html = parse(res.data, {
       replace: (domNode) => {
         if (domNode instanceof Element && domNode.attribs) {
           const isNodeEmptyAndStyless =
@@ -95,7 +93,6 @@ const getDoc = async (fileId: string) => {
               break;
             case "head":
               return <></>;
-              break;
             case "body":
               domNode.name = "div";
               domNode.attribs = {
@@ -104,12 +101,25 @@ const getDoc = async (fileId: string) => {
               };
               break;
 
-            default:
+        default: // Do nothing.
               break;
           }
         }
       },
-    });
+};
+
+const getDoc = async (fileId: string) => {
+  try {
+    /**
+     * Generic return type is unknown because of a bug. This is why casting is required.
+     * https://github.com/googleapis/google-api-nodejs-client/issues/1683
+     */
+    const response = await (service.files.export({
+      fileId,
+      mimeType: "text/html",
+    }) as GaxiosPromise<string>);
+
+    const html = parse(response.data, htmlParserOptions);
 
     return html;
   } catch (error) {
