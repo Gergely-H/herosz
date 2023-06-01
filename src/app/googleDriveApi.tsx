@@ -3,6 +3,7 @@ import type { GaxiosPromise } from "gaxios";
 import { google } from "googleapis";
 import type { HTMLReactParserOptions } from "html-react-parser";
 import parse, { Element } from "html-react-parser";
+import "server-only";
 
 const auth = new google.auth.GoogleAuth({
   credentials: JSON.parse(process.env.CREDENTIALS || ""),
