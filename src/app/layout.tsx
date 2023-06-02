@@ -26,7 +26,7 @@ const metadataConfig: MetadataConfig = {
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="hu">
-      <body className={inter.className}>
+      <body className={`${inter.className} overflow-y-scroll`}>
         <Header />
         <main className="flex flex-col items-center justify-between px-24 py-12">
           {children}
