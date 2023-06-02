@@ -2,7 +2,6 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import type { MetadataConfig } from "@/types/nextTypes";
 import { Inter } from "next/font/google";
-import Head from "next/head";
 import type { FC, PropsWithChildren } from "react";
 import "./globals.css";
 
@@ -16,22 +15,22 @@ const metadataConfig: MetadataConfig = {
       template: `%s - ${META_TITLE}`,
     },
     description: "Herosz Budapesti Állatotthon weboldala.",
+    /**
+     * This metadata is needed to avoid 403 response when fetching images of Google Docs.
+     * https://stackoverflow.com/a/74495028
+     */
+    referrer: "no-referrer",
   },
 };
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="hu">
-      <Head>
-        {/**
-         * This meta tag is needed to avoid 403 response when fetching images of google docs.
-         * https://stackoverflow.com/a/74495028
-         */}
-        <meta name="referrer" content="no-referrer" />
-      </Head>
       <body className={inter.className}>
         <Header />
-        {children}
+        <main className="flex flex-col items-center justify-between px-24 py-12">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
