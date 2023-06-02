@@ -1,4 +1,8 @@
+import { usePage } from "@/hooks/pageHooks";
+import { Page } from "@/types/pageTypes";
 import type { FC } from "react";
+
+const pageType = Page.Donation;
 
 /**
  * Typescript cannot handle async Server Components yet.
@@ -7,7 +11,8 @@ import type { FC } from "react";
  */
 /* @ts-expect-error Async Server Component */
 const DonationPage: FC = async () => {
-  return <></>;
+  const { pageContent } = await usePage(pageType);
+  return <>{pageContent}</>;
 };
 
 export default DonationPage;

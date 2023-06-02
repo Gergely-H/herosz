@@ -1,4 +1,9 @@
+import { usePage } from "@/hooks/pageHooks";
+import { Page } from "@/types/pageTypes";
 import type { FC } from "react";
+
+const pageType = Page.Volunteer;
+
 /**
  * Typescript cannot handle async Server Components yet.
  * https://github.com/vercel/next.js/issues/42292
@@ -6,7 +11,8 @@ import type { FC } from "react";
  */
 /* @ts-expect-error Async Server Component */
 const VolunteerPage: FC = async () => {
-  return <></>;
+  const { pageContent } = await usePage(pageType);
+  return <>{pageContent}</>;
 };
 
 export default VolunteerPage;

@@ -1,6 +1,9 @@
+import { usePage } from "@/hooks/pageHooks";
 import type { RouteSegmentConfig } from "@/types/nextTypes";
+import { Page } from "@/types/pageTypes";
 import type { FC } from "react";
-import { getDoc } from "./googleDriveApi";
+
+const pageType = Page.Home;
 
 const routeSegmentConfig: RouteSegmentConfig = {
   revalidate: 60,
@@ -13,12 +16,9 @@ const routeSegmentConfig: RouteSegmentConfig = {
  */
 /* @ts-expect-error Async Server Component */
 const Home: FC = async () => {
-  const doc = await getDoc(process.env.TEMP_DOC || "");
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between px-24 py-12">
-      {doc}
-    </main>
-  );
+  const { pageContent } = await usePage(pageType);
+
+  return <>{pageContent}</>;
 };
 
 export const { revalidate } = routeSegmentConfig;
