@@ -1,3 +1,4 @@
+import List from "@/components/List";
 import type { FC } from "react";
 
 /**
@@ -7,7 +8,7 @@ import type { FC } from "react";
  */
 /* @ts-expect-error Async Server Component */
 const DogsPage: FC = async () => {
-  return <></>;
+  return <List></List>;
 };
 
 export default DogsPage;
