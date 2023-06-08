@@ -1,4 +1,5 @@
-import type { FC } from "react";
+import List from '@/components/List';
+import type { FC } from 'react';
 
 /**
  * Typescript cannot handle async Server Components yet.
@@ -7,7 +8,7 @@ import type { FC } from "react";
  */
 /* @ts-expect-error Async Server Component */
 const NewsListPage: FC = async () => {
-  return <></>;
+  return <List></List>;
 };
 
 export default NewsListPage;
