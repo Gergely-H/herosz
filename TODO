@@ -17,3 +17,5 @@
 - add env variables to deployment
 
 - remove layout grouping if it has no benefit to avoid rerendering of route when chaning between list and simple pages. (otherwise it rerenders the layout for the different route groups)
+
+- fix google drive docs export api call (generate export url)
