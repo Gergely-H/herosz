@@ -1,5 +1,13 @@
-import List from "@/components/List";
-import type { FC } from "react";
+import List from '@/components/List';
+import t from '@/translations/hu';
+import { MetadataConfig } from '@/types/nextTypes';
+import type { FC } from 'react';
+
+const metadataConfig: MetadataConfig = {
+  metadata: {
+    title: t.navigation.items.dogs,
+  },
+};
 
 /**
  * Typescript cannot handle async Server Components yet.
@@ -11,4 +19,5 @@ const DogsPage: FC = async () => {
   return <List></List>;
 };
 
+export const { metadata } = metadataConfig;
 export default DogsPage;
