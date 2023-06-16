@@ -1,5 +1,12 @@
 import List from '@/components/List';
+import { MetadataConfig } from '@/types/nextTypes';
 import type { FC } from 'react';
+
+const metadataConfig: MetadataConfig = {
+  metadata: {
+    title: 'Példák',
+  },
+};
 
 /**
  * Typescript cannot handle async Server Components yet.
@@ -11,4 +18,5 @@ const ExamplesPage: FC = async () => {
   return <List></List>;
 };
 
+export const { metadata } = metadataConfig;
 export default ExamplesPage;
