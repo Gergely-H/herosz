@@ -1,8 +1,16 @@
-import { usePage } from "@/hooks/pageHooks";
-import { Page } from "@/types/pageTypes";
-import type { FC } from "react";
+import { usePage } from '@/hooks/pageHooks';
+import t from '@/translations/hu';
+import { MetadataConfig } from '@/types/nextTypes';
+import { Page } from '@/types/pageTypes';
+import type { FC } from 'react';
 
 const pageType = Page.Contact;
+
+const metadataConfig: MetadataConfig = {
+  metadata: {
+    title: t.navigation.items.contact,
+  },
+};
 
 /**
  * Typescript cannot handle async Server Components yet.
@@ -15,4 +23,5 @@ const ContactPage: FC = async () => {
   return <>{pageContent}</>;
 };
 
+export const { metadata } = metadataConfig;
 export default ContactPage;
