@@ -1,5 +1,7 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+// import Main from '@/components/Main';
+import Main from '@/components/Main';
 import type { MetadataConfig } from '@/types/nextTypes';
 import { Inter } from 'next/font/google';
 import type { FC, PropsWithChildren } from 'react';
@@ -29,9 +31,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
     <html lang="hu">
       <body className={`${inter.className} overflow-y-scroll`}>
         <Header />
-        <main className="flex flex-col items-center justify-between px-24 py-12">
-          {children}
-        </main>
+        <Main>{children}</Main>
         <Footer />
       </body>
     </html>
