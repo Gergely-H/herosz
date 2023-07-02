@@ -10,7 +10,7 @@
 
 - redirect to homepage if no url path exists
 
-- either solve the hungarian folder naming or include an explanation of it in README
+- include an explanation of it in README
 
 - add eslint and other configs from other project
 
