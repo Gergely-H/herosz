@@ -1,5 +1,3 @@
-- check what HTML or JS code turns into from google docs content
-
 - lekezelni, ha nem google docs-ot kapunk vissza egy olyan mappából, ahonnan csak google docs-ot várnánk
 
 - change server access to google drive to read only so in case of an attack the "database" is not purged
